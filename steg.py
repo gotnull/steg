@@ -2,8 +2,6 @@ import sys
 import os
 from PIL import Image
 
-
-
 def file_to_bits(file_path):
     with open(file_path, "rb") as f:
         data = f.read()
@@ -157,7 +155,7 @@ def list_hidden_files(image_path):
 if __name__ == "__main__":
     if len(sys.argv) < 3:
         print("Usage:")
-        print("  Encode: python steg.py e input.png output.png file_to_hide")
+        print("  Encode: python steg.py e <input_image.png> [output_image.png] <file_to_hide>")
         print("  Decode: python steg.py d encoded.png [output_file]")
         print("  List:   python steg.py l encoded.png")
         sys.exit(1)
@@ -165,11 +163,16 @@ if __name__ == "__main__":
     mode = sys.argv[1]
 
     if mode == 'e':
-        if len(sys.argv) != 5:
-            print("Usage: python steg.py e input.png output.png file_to_hide")
+        if len(sys.argv) == 4: # e input_img file_to_hide
+            _, _, input_img, file_path = sys.argv
+            output_img = input_img.replace(".png", "_encoded.png")
+            encode(input_img, output_img, file_path)
+        elif len(sys.argv) == 5: # e input_img output_img file_to_hide
+            _, _, input_img, output_img, file_path = sys.argv
+            encode(input_img, output_img, file_path)
+        else:
+            print("Usage: python steg.py e <input_image.png> [output_image.png] <file_to_hide>")
             sys.exit(1)
-        _, _, input_img, output_img, file_path = sys.argv
-        encode(input_img, output_img, file_path)
 
     elif mode == 'd':
         if len(sys.argv) not in [3, 4]:

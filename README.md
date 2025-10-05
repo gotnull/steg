@@ -13,12 +13,14 @@ This tool allows you to encode a file into a PNG image and decode it back. It us
 To hide a file within an image:
 
 ```bash
+python3 steg.py e <input_image.png> <file_to_hide>
+# Or, to specify an output image:
 python3 steg.py e <input_image.png> <output_image.png> <file_to_hide>
 ```
 
 - `<input_image.png>`: The cover image in which you want to hide the file.
-- `<output_image.png>`: The name of the output image that will contain the hidden file.
 - `<file_to_hide>`: The file you want to hide.
+- `<output_image.png>`: (Optional) The name of the output image that will contain the hidden file. If not provided, the output image will be named `<input_image_encoded.png>`.
 
 ### Listing Hidden Files
 
