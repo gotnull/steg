@@ -62,11 +62,12 @@ You can verify this yourself:
 # List the hidden file in monalisa_encoded.png
 python3 steg.py l monalisa_encoded.png
 
-# Decode the hidden steg.py script
-python3 steg.py d monalisa_encoded.png decoded_steg_script.py
+# Decode the hidden files into a directory
+python3 steg.py d monalisa_encoded.png decoded_files/
 
+# The original steg.py will be found inside 'decoded_files/'
 # Compare the decoded script with the original
-diff steg.py decoded_steg_script.py
+diff steg.py decoded_files/steg.py
 ```
 
 ## Installation
