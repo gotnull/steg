@@ -1,5 +1,6 @@
 import sys
 import os
+import datetime
 from PIL import Image
 
 def file_to_bits(file_path):
@@ -112,6 +113,8 @@ def decode(image_path, output_dir="."):
         print("No hidden files found in the image.")
         return
 
+    # Ensure the output directory exists once before processing files
+    os.makedirs(output_dir, exist_ok=True)
     print(f"Found {num_files} hidden file(s).")
     
     for i in range(num_files):
@@ -154,6 +157,8 @@ def decode(image_path, output_dir="."):
         binary_data = "".join(bits[current_offset : data_end_offset])
         current_offset = data_end_offset
 
+        # Ensure the output directory exists before writing any files
+        os.makedirs(output_dir, exist_ok=True)
         output_file_path = os.path.join(output_dir, filename)
         bits_to_file(binary_data, output_file_path)
         print(f"Decoded file '{filename}' written to {output_file_path}")
@@ -284,7 +289,13 @@ if __name__ == "__main__":
             sys.exit(1)
         
         encoded_img = sys.argv[2]
-        output_dir = sys.argv[3] if len(sys.argv) == 4 else "."
+        if len(sys.argv) == 4:
+            output_dir = sys.argv[3]
+        else:
+            # Generate a unique default output directory name
+            timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
+            output_dir = f"decoded_files_{timestamp}"
+        
         decode(encoded_img, output_dir)
 
     elif mode == 'l':

@@ -48,7 +48,7 @@ python3 steg.py d <encoded_image.png> [output_directory]
 ```
 
 - `<encoded_image.png>`: The image that contains the hidden files.
-- `[output_directory]`: (Optional) The directory where the hidden files will be extracted. If not provided, files will be extracted to the current directory.
+- `[output_directory]`: (Optional) The directory where the hidden files will be extracted. If not provided, a unique timestamped directory (e.g., `decoded_files_YYYYMMDD_HHMMSS`) will be created in the current directory, and files will be extracted there.
 
 ## A Fun Example: Mona Lisa
 
