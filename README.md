@@ -50,6 +50,25 @@ python3 steg.py d <encoded_image.png> [output_directory]
 - `<encoded_image.png>`: The image that contains the hidden files.
 - `[output_directory]`: (Optional) The directory where the hidden files will be extracted. If not provided, files will be extracted to the current directory.
 
+## A Fun Example: Mona Lisa
+
+To demonstrate the core principle of steganography – that the hidden data is visually indistinguishable from the original – consider the `monalisa.png` and `monalisa_encoded.png` files.
+
+The `monalisa_encoded.png` image contains the entire `steg.py` script hidden within its pixels. If you open both `monalisa.png` (the original) and `monalisa_encoded.png` (the one with the hidden script) in an image viewer, you'll find them visually identical. This is precisely the point of steganography: to conceal the very existence of the hidden information.
+
+You can verify this yourself:
+
+```bash
+# List the hidden file in monalisa_encoded.png
+python3 steg.py l monalisa_encoded.png
+
+# Decode the hidden steg.py script
+python3 steg.py d monalisa_encoded.png decoded_steg_script.py
+
+# Compare the decoded script with the original
+diff steg.py decoded_steg_script.py
+```
+
 ## Installation
 
 1.  Clone the repository or download the `steg.py` script.
