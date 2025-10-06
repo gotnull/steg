@@ -163,20 +163,13 @@ def list_hidden_files(image_path):
     width, height = img.size
     
     bits = []
-    max_pixels_to_read = 1024 * 10 # Read more pixels for metadata in case of many files
-    pixels_read = 0
-
+    # Read all pixels, similar to decode function, to ensure all hidden data is covered
     for row in range(height):
         for col in range(width):
-            if pixels_read >= max_pixels_to_read:
-                break
             pixel = img.getpixel((col, row))
             bits.append(str(pixel[0] & 1))
             bits.append(str(pixel[1] & 1))
             bits.append(str(pixel[2] & 1))
-            pixels_read += 1
-        if pixels_read >= max_pixels_to_read:
-            break
 
     MAGIC_NUMBER = "0101010101010101" # 16 bits
     MAGIC_NUMBER_LEN = len(MAGIC_NUMBER)
