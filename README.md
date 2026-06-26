@@ -56,16 +56,18 @@ To demonstrate the core principle of steganography – that the hidden data is v
 
 The `monalisa_encoded.png` image contains the entire `steg.py` script hidden within its pixels. If you open both `monalisa.png` (the original) and `monalisa_encoded.png` (the one with the hidden script) in an image viewer, you'll find them visually identical. This is precisely the point of steganography: to conceal the very existence of the hidden information.
 
-<table>
-  <tr>
-    <td align="center"><img src="monalisa.png" alt="Original Mona Lisa" width="320"></td>
-    <td align="center"><img src="monalisa_encoded.png" alt="Mona Lisa with steg.py hidden inside" width="320"></td>
-  </tr>
-  <tr>
-    <td align="center"><strong>monalisa.png</strong><br>Original</td>
-    <td align="center"><strong>monalisa_encoded.png</strong><br>Contains the hidden <code>steg.py</code></td>
-  </tr>
-</table>
+<p align="center">
+  <table>
+    <tr>
+      <td align="center"><img src="monalisa.png" alt="Original Mona Lisa" width="320"></td>
+      <td align="center"><img src="monalisa_encoded.png" alt="Mona Lisa with steg.py hidden inside" width="320"></td>
+    </tr>
+    <tr>
+      <td align="center"><strong>monalisa.png</strong><br>Original</td>
+      <td align="center"><strong>monalisa_encoded.png</strong><br>Contains the hidden <code>steg.py</code></td>
+    </tr>
+  </table>
+</p>
 
 You can verify this yourself:
 
